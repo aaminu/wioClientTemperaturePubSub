@@ -11,6 +11,9 @@
 WiFiClient wioTerminalClient;
 PubSubClient client( wioTerminalClient );
 
+//declare the Temperature and Humidity object
+DHT dht(D0, DHT11);
+
 //Prototypes for function defined at the bottom of this doucment
 void connectWifi( void );
 
@@ -26,12 +29,18 @@ void  setup()
     Serial.print("[Status] Serial init: True");
     
     connectWifi(); //Connect to WiFi
+    dht.begin();
     
 }
 
 void  loop()
 {
-    
+    float temp_humd[2] = {0};
+    temp_humd[0] = dht.readTemperature();
+    temp_humd[1] = dht.readHumidity();
+    Serial.print("Temperature: "); Serial.println(temp_humd[0]); Serial.println("°C");
+    Serial.print("Humidity: "); Serial.println(temp_humd[1]); Serial.println("%");
+
 }
 
 
