@@ -1,0 +1,6 @@
+TOPIC = "<MQTT Topic>"
+USERNAME = "<MQTT USERNAME>"
+PASSWORD = "<MQTT PASSWORD>"
+
+server = "<SERVER>"
+port = 8883
